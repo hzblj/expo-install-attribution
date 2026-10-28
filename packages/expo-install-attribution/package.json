@@ -1,0 +1,79 @@
+{
+  "name": "@hzblj/expo-install-attribution",
+  "version": "0.0.0",
+  "description": "Where an install came from, for Expo: the Play Install Referrer on Android and Apple Ads attribution through AdServices on iOS, behind promises with coded errors.",
+  "author": "Jan Blazej",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hzblj/expo-install-attribution.git",
+    "directory": "packages/expo-install-attribution"
+  },
+  "bugs": {
+    "url": "https://github.com/hzblj/expo-install-attribution/issues"
+  },
+  "homepage": "https://github.com/hzblj/expo-install-attribution#readme",
+  "keywords": [
+    "adservices",
+    "android",
+    "apple-ads",
+    "apple-search-ads",
+    "attribution",
+    "expo",
+    "expo-module",
+    "google-play",
+    "install-referrer",
+    "ios",
+    "play-install-referrer",
+    "react-native",
+    "referrer",
+    "utm"
+  ],
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./build/index.d.ts",
+      "default": "./build/index.js"
+    },
+    "./expo-module.config.json": "./expo-module.config.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "android/build.gradle",
+    "android/src/main/**",
+    "build",
+    "expo-module.config.json",
+    "ios/*.podspec",
+    "ios/*.swift"
+  ],
+  "scripts": {
+    "build": "rm -rf build && tsc -p ./tsconfig.build.json",
+    "clean": "rm -rf build",
+    "prepack": "yarn run -T turbo run build --filter=$npm_package_name...",
+    "lint": "yarn run -T concurrently \"yarn biome:check\" \"yarn tsc:check\"",
+    "lint:fix": "yarn run -T biome check --write .",
+    "biome:check": "yarn run -T biome check .",
+    "tsc:check": "tsc -p ./tsconfig.json",
+    "test": "node --import tsx --test test/*.test.ts"
+  },
+  "peerDependencies": {
+    "expo": ">=57",
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/react": "~19.2.14",
+    "expo": "~57.0.31",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "tsx": "^4.23.15",
+    "typescript": "~7.0.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

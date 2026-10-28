@@ -1,0 +1,27 @@
+import groovy.json.JsonSlurper
+
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+def packageJson = new JsonSlurper().parseText(file('../package.json').text)
+
+group = 'com.hzblj.expoinstallattribution'
+version = packageJson.version
+
+android {
+  namespace "com.hzblj.expoinstallattribution"
+  defaultConfig {
+    versionCode 1
+    versionName packageJson.version
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  // Its manifest brings the BIND_GET_INSTALL_REFERRER_SERVICE permission, merged into the app's.
+  implementation "com.android.installreferrer:installreferrer:2.2"
+}
