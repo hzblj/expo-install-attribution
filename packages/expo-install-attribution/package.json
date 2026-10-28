@@ -1,6 +1,6 @@
 {
   "name": "@hzblj/expo-install-attribution",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Where an install came from, for Expo: the Play Install Referrer on Android and Apple Ads attribution through AdServices on iOS, behind promises with coded errors.",
   "author": "Jan Blazej",
   "license": "MIT",
